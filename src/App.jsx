@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="relative h-screen flex flex-col items-center justify-center bg-black text-white text-center px-4">
       <div className="absolute top-4 left-4">
-        <img src="./matrixdark.jpg" alt="Matrix logo" className="h-12 w-auto" />
+        <img src="/matrixdark.jpg" alt="Matrix logo" className="h-12 w-auto" />
       </div>
   
       {/* Title */}
