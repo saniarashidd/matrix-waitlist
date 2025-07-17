@@ -8,20 +8,20 @@ function App() {
   const [showForm, setShowForm] = useState(false)
   const iframeRef = useRef(null)
   const words = [
-    'Welcome',
+    'Welcome.',
     
   ]
   const [title] = useTypewriter({
     words,
     loop: 1,
-    typeSpeed: 110,
+    typeSpeed: 170,
     deleteSpeed: 50,
     delaySpeed: 1500,
     onLoopDone: () => {
       setTimeout(() => {
         setShowBlurb(true)
         setShowButton(true)
-      }, 2000) // 1000ms = 1 s delay
+      }, 1000) // 1000ms = 1 s delay
     },
   })
 
@@ -126,10 +126,17 @@ function Blurb() {
   const [line1Text] = useTypewriter({
     words: ['Most apps help you meet people.'],
     loop: 1,
-    typeSpeed: 70,
+    typeSpeed: 75,
     deleteSpeed: 0,
-    delaySpeed: 1000,
-    onLoopDone: () => setShowSecondLine(true),
+    delaySpeed: 2000,
+    onLoopDone: () => {
+      setTimeout(() => {
+        setShowSecondLine(true)
+        
+      }, 1200) // 1000ms = 1 s delay
+    },
+    
+    //onLoopDone: () => setShowSecondLine(true),
   })
 
   return (
@@ -144,7 +151,7 @@ function SecondLine() {
   const [line2Text] = useTypewriter({
     words: ['Matrix helps you keep them.'],
     loop: 1,
-    typeSpeed: 70,
+    typeSpeed: 75,
     deleteSpeed: 0,
     delaySpeed: 1000,
   })
