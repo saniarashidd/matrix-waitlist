@@ -74,7 +74,7 @@ function App() {
           className="mt-2 bg-white text-black px-6 py-2 rounded-md hover:bg-cream"
           onClick={() => setShowForm(true)}
         >
-          Join Waitlist
+          Join the Waitlist
         </button>
       </div>
   
