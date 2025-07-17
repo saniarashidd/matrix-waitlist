@@ -124,7 +124,7 @@ function Blurb() {
   const [showSecondLine, setShowSecondLine] = useState(false)
 
   const [line1Text] = useTypewriter({
-    words: ['Most apps help you meet people.'],
+    words: ['Most apps help you make connections.'],
     loop: 1,
     typeSpeed: 75,
     deleteSpeed: 0,
