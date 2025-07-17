@@ -7,9 +7,12 @@ function App() {
   const [showButton, setShowButton] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const iframeRef = useRef(null)
-
+  const words = [
+    'Welcome',
+    
+  ]
   const [title] = useTypewriter({
-    words: ['welcome... to your matrix.'],
+    words,
     loop: 1,
     typeSpeed: 110,
     deleteSpeed: 50,
@@ -47,13 +50,13 @@ function App() {
   
       {/* Title */}
       <div className="min-h-[220px] flex flex-col items-center justify-center">
-        <h1 className="text-5xl sm:text-6xl font-bold min-h-[60px]">
+        <h1 className="text-5xl sm:text-6xl font-bold min-h-[80px]">
           {title}
           {!showBlurb && <Cursor />}
         </h1>
   
         <div
-          className={`text-xl italic min-h-[32px] mt-6 transition-opacity duration-500 ${
+          className={`text-xl italic min-h-[120px] mt-6 transition-opacity duration-500 ${
             showBlurb ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -118,25 +121,39 @@ function App() {
   */
 
 function Blurb() {
-  
-  const words = [
-    'Most apps help you meet people.',
-    'Matrix helps you keep them, and your social capital, alive.',
-  ]
-  const [blurb] = useTypewriter({
-    words,
-    loop: 0,
+  const [showSecondLine, setShowSecondLine] = useState(false)
+
+  const [line1Text] = useTypewriter({
+    words: ['Most apps help you meet people.'],
+    loop: 1,
     typeSpeed: 70,
-    deleteSpeed: 40,
-    delaySpeed: 2000,
-    
+    deleteSpeed: 0,
+    delaySpeed: 1000,
+    onLoopDone: () => setShowSecondLine(true),
   })
 
   return (
-    <span>
-      {blurb}
+    <div className="text-xl leading-relaxed min-h-[80px]">
+      <p>{line1Text}</p>
+      {showSecondLine && <SecondLine />}
+    </div>
+  )
+}
+
+function SecondLine() {
+  const [line2Text] = useTypewriter({
+    words: ['Matrix helps you keep them.'],
+    loop: 1,
+    typeSpeed: 70,
+    deleteSpeed: 0,
+    delaySpeed: 1000,
+  })
+
+  return (
+    <p>
+      {line2Text}
       <Cursor />
-    </span>
+    </p>
   )
 }
 
