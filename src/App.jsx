@@ -91,18 +91,20 @@ function App() {
         </button>
     
         {/* Embedded Tally Form */}
-        <iframe
-          data-tally-src="https://tally.so/embed/wk8Zkj?alignLeft=1&hideTitle=1&dynamicHeight=1"
-          loading="lazy"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-          title="Matrix Waitlist"
-          className="w-full h-full max-w-2xl mx-auto rounded-md shadow-xl"
-          ref={iframeRef}
-        />
+        <div className="w-full max-w-2xl h-[90vh] overflow-y-auto px-4">
+          <iframe
+            data-tally-src="https://tally.so/embed/wk8Zkj?alignLeft=1&hideTitle=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="1000px"  // Ensure this is tall enough to include submit button
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            title="Matrix Waitlist"
+            className="w-full rounded-md shadow-xl"
+            ref={iframeRef}
+          />
+        </div>
       </div>
       )}
     </div>
