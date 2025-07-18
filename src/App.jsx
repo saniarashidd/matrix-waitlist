@@ -20,7 +20,7 @@ function App() {
     onLoopDone: () => {
       setTimeout(() => {
         setShowBlurb(true)
-        setShowButton(true)
+        //setShowButton(true)
       }, 1000) // 1000ms = 1 s delay
     },
   })
@@ -60,7 +60,7 @@ function App() {
             showBlurb ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          {showBlurb && <Blurb />}
+          {showBlurb && <Blurb setShowButton={setShowButton}/>}
         </div>
       </div>
   
@@ -110,17 +110,9 @@ function App() {
   
 }
 
-/*
- <form className="flex flex-col items-center gap-4">
-        <input
-          type="email"
-          placeholder="you@example.com"
-          className="px-4 py-2 border border-gray-300 rounded-md w-64 text-black"
-        />
-      </form>
-  */
 
-function Blurb() {
+
+function Blurb({setShowButton}) {
   const [showSecondLine, setShowSecondLine] = useState(false)
 
   const [line1Text] = useTypewriter({
@@ -142,18 +134,21 @@ function Blurb() {
   return (
     <div className="text-xl leading-relaxed min-h-[80px]">
       <p>{line1Text}</p>
-      {showSecondLine && <SecondLine />}
+      {showSecondLine && <SecondLine setShowButton={setShowButton}/>}
     </div>
   )
 }
 
-function SecondLine() {
+function SecondLine({setShowButton}) {
   const [line2Text] = useTypewriter({
     words: ['Matrix helps you keep them.'],
     loop: 1,
     typeSpeed: 75,
     deleteSpeed: 0,
     delaySpeed: 1000,
+    onLoopDone: () => {
+      setShowButton(true)
+    }
   })
 
   return (
