@@ -6,10 +6,9 @@ function App() {
   const [showBlurb, setShowBlurb] = useState(false)
   const [showButton, setShowButton] = useState(false)
   const [showForm, setShowForm] = useState(false)
-  const iframeRef = useRef(null)
+  //const iframeRef = useRef(null)
   const words = [
     'Welcome.',
-    
   ]
   const [title] = useTypewriter({
     words,
@@ -20,7 +19,6 @@ function App() {
     onLoopDone: () => {
       setTimeout(() => {
         setShowBlurb(true)
-        //setShowButton(true)
       }, 1000) // 1000ms = 1 s delay
     },
   })
@@ -28,18 +26,13 @@ function App() {
   useEffect(() => {
     if (!showForm) return
 
-    const loadTally = () => {
-      if (typeof window.Tally !== 'undefined') {
-        window.Tally.loadEmbeds()
-      } else {
-        const script = document.createElement('script')
-        script.src = 'https://tally.so/widgets/embed.js'
-        script.onload = () => window.Tally && window.Tally.loadEmbeds()
-        document.body.appendChild(script)
-      }
+    const script = document.createElement('script')
+    script.src = 'https://server.fillout.com/embed/v1/'
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      document.body.removeChild(script)
     }
-
-    loadTally()
   }, [showForm])
 
   return (
@@ -78,7 +71,7 @@ function App() {
         </button>
       </div>
   
-      {/* Tally Form Overlay */}
+      {/* Fillout Form Overlay */}
       {showForm && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-95 flex items-center justify-center transition-opacity duration-700 opacity-100">
         {/* Close Button */}
@@ -90,8 +83,16 @@ function App() {
           &times;
         </button>
     
-        {/* Embedded Tally Form */}
-        <div className="w-full max-w-2xl h-[90vh] overflow-y-auto px-4">
+        {/* Embedded Form */}
+        <div
+          className="w-full max-w-2xl h-[90vh] overflow-y-auto px-4"
+          data-fillout-id="iuzeH2a1Kbus"
+          data-fillout-embed-type="standard"
+          data-fillout-inherit-parameters
+          data-fillout-dynamic-resize
+        ></div>
+
+         {/* <div className="w-full max-w-2xl h-[90vh] overflow-y-auto px-4">
           <iframe
             data-tally-src="https://tally.so/embed/wk8Zkj?alignLeft=1&hideTitle=1&dynamicHeight=1"
             loading="lazy"
@@ -104,7 +105,7 @@ function App() {
             className="w-full rounded-md shadow-xl"
             ref={iframeRef}
           />
-        </div>
+        </div>  */}
       </div>
       )}
     </div>
