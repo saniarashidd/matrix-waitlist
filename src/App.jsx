@@ -8,12 +8,12 @@ function App() {
   const [showForm, setShowForm] = useState(false)
   //const iframeRef = useRef(null)
   const words = [
-    'Welcome.',
+    'Welcome to Your [Matrix]',
   ]
   const [title] = useTypewriter({
     words,
     loop: 1,
-    typeSpeed: 170,
+    typeSpeed: 120,
     deleteSpeed: 50,
     delaySpeed: 1500,
     onLoopDone: () => {
