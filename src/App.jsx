@@ -19,7 +19,7 @@ function App() {
     onLoopDone: () => {
       setTimeout(() => {
         setShowBlurb(true)
-      }, 1000) // 1000ms = 1 s delay
+      }, 200) // 1000ms = 1 s delay
     },
   })
 
